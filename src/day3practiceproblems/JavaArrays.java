@@ -6,4 +6,10 @@ public class JavaArrays {
         printArray(arr);
     }
 
+    public static void printArray(int[] arr) {
+        System.out.println("Array Elements :");
+        for (int i = 0; i < arr.length; i++)
+            System.out.println(arr[i]);
+
+    }
 }
