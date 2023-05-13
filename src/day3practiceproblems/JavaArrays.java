@@ -10,7 +10,8 @@ public class JavaArrays {
         //largestElement(arr);
         //smallestElement(arr);
         //evenPosition(arr);
-        reverseOrder(arr);
+        //reverseOrder(arr);
+        oddPosition(arr);
     }
 
     public static void printArray(int[] arr) {
@@ -47,6 +48,11 @@ public class JavaArrays {
     public static void reverseOrder(int[] arr) {
         System.out.println("Array in reverse order:");
         for (int i = arr.length - 1; i >= 0; i--)
+            System.out.println(arr[i]);
+    }
+    public static void oddPosition(int[] arr) {
+        System.out.println("Elements which are present on odd position:");
+        for (int i = 0; i < arr.length; i = i + 2)
             System.out.println(arr[i]);
     }
 
