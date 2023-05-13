@@ -1,79 +1,88 @@
 package day3practiceproblems;
 
+import java.util.Scanner;
+
 public class JavaArrays {
     public static void main(String[] args) {
-        int[] arr = {10, 20, 30, 10, 40, 50, 98, 60, 70, 80, 50};
-        System.out.println("Array Elements:");
-        for (int i = 0; i < arr.length; i++)
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter size of the array :");
+        int size = sc.nextInt();
+        int arr[] = new int[size];
+        System.out.println("Enter element of an array :");
+        for (int i = 0; i < size; i++)
+            arr[i] = sc.nextInt();
+        System.out.println("Array Elements : ");
+        for (int i = 0; i < size; i++)
             System.out.println(arr[i]);
-        //printArray(arr);
-        //largestElement(arr);
-        //smallestElement(arr);
-        //evenPosition(arr);
-        //reverseOrder(arr);
-        //oddPosition(arr);
-        //duplicateElements(arr);
-        //ascendingOrder(arr);
-        secondLargestElemnet(arr);
+        //printArray(arr,size);
+        //largestElement(arr,size);
+        //smallestElement(arr,size);
+        //evenPosition(arr,size);
+        //reverseOrder(arr,size);
+        //oddPosition(arr,size);
+        //duplicateElements(arr,size);
+        //ascendingOrder(arr,size);
+        //secondLargestElemnet(arr,size);
+        frequency(arr, size);
     }
 
-    public static void printArray(int[] arr) {
+    public static void printArray(int[] arr, int size) {
         System.out.println("Array Elements :");
-        for (int i = 0; i < arr.length; i++)
+        for (int i = 0; i < size; i++)
             System.out.println(arr[i]);
 
     }
 
-    public static void largestElement(int[] arr) {
+    public static void largestElement(int[] arr, int size) {
         int max = arr[0];
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < size; i++) {
             if (arr[i] > max)
                 max = arr[i];
         }
         System.out.println("Largest element of array: " + max);
     }
 
-    public static void smallestElement(int[] arr) {
+    public static void smallestElement(int[] arr, int size) {
         int min = arr[0];
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < size; i++) {
             if (arr[i] < min)
                 min = arr[i];
         }
         System.out.println("Smallet element of array: " + min);
     }
 
-    public static void evenPosition(int[] arr) {
+    public static void evenPosition(int[] arr, int size) {
         System.out.println("Elements which are present on even position:");
-        for (int i = 1; i < arr.length; i = i + 2)
+        for (int i = 1; i < size; i = i + 2)
             System.out.println(arr[i]);
     }
 
-    public static void reverseOrder(int[] arr) {
+    public static void reverseOrder(int[] arr, int size) {
         System.out.println("Array in reverse order:");
-        for (int i = arr.length - 1; i >= 0; i--)
+        for (int i = size - 1; i >= 0; i--)
             System.out.println(arr[i]);
     }
 
-    public static void oddPosition(int[] arr) {
+    public static void oddPosition(int[] arr, int size) {
         System.out.println("Elements which are present on odd position:");
-        for (int i = 0; i < arr.length; i = i + 2)
+        for (int i = 0; i < size; i = i + 2)
             System.out.println(arr[i]);
     }
 
-    public static void duplicateElements(int[] arr) {
+    public static void duplicateElements(int[] arr, int size) {
         System.out.println("Duplicate elements are :");
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = i + 1; j < arr.length; j++) {
+        for (int i = 0; i < size; i++) {
+            for (int j = i + 1; j < size; j++) {
                 if (arr[i] == arr[j])
                     System.out.println(arr[i]);
             }
         }
     }
 
-    public static void ascendingOrder(int[] arr) {
+    public static void ascendingOrder(int[] arr, int size) {
         int temp = 0;
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = i + 1; j < arr.length; j++) {
+        for (int i = 0; i < size; i++) {
+            for (int j = i + 1; j < size; j++) {
                 if (arr[i] > arr[j]) {
                     temp = arr[i];
                     arr[i] = arr[j];
@@ -82,13 +91,14 @@ public class JavaArrays {
             }
         }
         System.out.println("Array in ascending order :");
-        for (int i = 0; i < arr.length; i++)
+        for (int i = 0; i < size; i++)
             System.out.println(arr[i]);
     }
-    public static void secondLargestElemnet(int[] arr) {
+
+    public static void secondLargestElemnet(int[] arr, int size) {
         int temp = 0;
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = i + 1; j < arr.length; j++) {
+        for (int i = 0; i < size; i++) {
+            for (int j = i + 1; j < size; j++) {
                 if (arr[i] > arr[j]) {
                     temp = arr[i];
                     arr[i] = arr[j];
@@ -96,8 +106,28 @@ public class JavaArrays {
                 }
             }
         }
-        System.out.println("Second largest element of an array :"+arr[arr.length-2]);
+        System.out.println("Second largest element of an array :" + arr[size - 2]);
 
+    }
+
+    public static void frequency(int[] arr, int size) {
+        int frqncy[] = new int[size];
+        for (int i = 0; i < size; i++) {
+            int count = 1;
+            for (int j = i + 1; j < size; j++) {
+                if (arr[i] == arr[j]) {
+                    count++;
+                    frqncy[j] = -1;
+                }
+            }
+            if (frqncy[i] != -1)
+                frqncy[i] = count;
+        }
+        System.out.println("Array element--->frequency");
+        for (int i = 0; i < frqncy.length; i++) {
+            if (frqncy[i] != -1)
+                System.out.println("   " + arr[i] + "   " + frqncy[i]);
+        }
     }
 
 
