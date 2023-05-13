@@ -2,7 +2,7 @@ package day3practiceproblems;
 
 public class JavaArrays {
     public static void main(String[] args) {
-        int[] arr = {10, 20, 30, 40, 50, 98, 60, 70, 80, 90};
+        int[] arr = {10, 20, 30, 10, 40, 50, 98, 60, 70, 80, 50};
         System.out.println("Array Elements:");
         for (int i = 0; i < arr.length; i++)
             System.out.println(arr[i]);
@@ -11,7 +11,8 @@ public class JavaArrays {
         //smallestElement(arr);
         //evenPosition(arr);
         //reverseOrder(arr);
-        oddPosition(arr);
+        //oddPosition(arr);
+        duplicateElements(arr);
     }
 
     public static void printArray(int[] arr) {
@@ -50,10 +51,21 @@ public class JavaArrays {
         for (int i = arr.length - 1; i >= 0; i--)
             System.out.println(arr[i]);
     }
+
     public static void oddPosition(int[] arr) {
         System.out.println("Elements which are present on odd position:");
         for (int i = 0; i < arr.length; i = i + 2)
             System.out.println(arr[i]);
+    }
+
+    public static void duplicateElements(int[] arr) {
+        System.out.println("Duplicate elements are :");
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[i] == arr[j])
+                    System.out.println(arr[i]);
+            }
+        }
     }
 
 }
